@@ -35,5 +35,5 @@
 // console.log(tenTuyY(8, 9));
 
 // with name export
-// import { myVar as newName } from "./name.js";
-// console.log(newName);
+import { myVar as newName } from "./name.js";
+console.log(newName);
