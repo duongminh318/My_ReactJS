@@ -23,10 +23,36 @@
 
 // Function expression (sau dấu bằng và không có tên hàm)
 
-let tong = function (soA, soB) {
-    return soA + soB;
+// let tong = function (soA, soB) {
+//     return soA + soB;
+// }
+
+// // gọi tên biến
+
+// console.log(tong(2, 4));
+
+// 3. arrow function
+// tính tích 2 số, tổng 2 số sau đó lấy tích + tổng
+
+// let result = (soA, soB)=>{
+//     let tong= soA+ soB;
+//     let tich= soA* soB;
+//     return tong +tich;
+// }
+
+// console.log(result(3,5));
+
+// 3.3 khi trả về 1 đối tượng
+let person= (ten, tuoi)=>{
+    return{
+        "hoVaTen": ten,
+        "hưởng Thọ": tuoi
+    }
 }
 
-// gọi tên biến
+ //console.log(person("Win",100));
 
-console.log(tong(2, 4));
+let obj= person("Minh",100);
+
+console.log(obj.hoVaTen);
+console.log(obj["hưởng Thọ"]);
