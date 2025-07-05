@@ -3,14 +3,21 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-// () => {}
-const App= ()=>  {
+// ()=>{  }
+// component= html+ css+ js
+
+const Mycomponent = () => {
+
+  return (
+    <div>Win & Duong Khoi Minh</div> // tag
+
+  );
+}
+
+
+
+const App = () => {
   const [count, setCount] = useState(0)
-
-  // function myFunction() {
-  //   console.log(">>  đã bảo đừng click em rồi :))");
-  // }
-
 
 
   return (
@@ -26,6 +33,7 @@ const App= ()=>  {
         </a>
       </div>
       <h1>Hello World & Alex Win</h1>
+      <Mycomponent/> 
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -37,13 +45,6 @@ const App= ()=>  {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <div>
-        <button onClick={() => {
-
-          console.log(">>  đã bảo đừng click em rồi :))");
-        }} > đừng click em</button>
-
-      </div>
     </>
   )
 }
