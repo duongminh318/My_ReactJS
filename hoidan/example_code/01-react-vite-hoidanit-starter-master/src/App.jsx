@@ -3,10 +3,19 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
+// () => {}
+const App= ()=>  {
   const [count, setCount] = useState(0)
 
+  // function myFunction() {
+  //   console.log(">>  đã bảo đừng click em rồi :))");
+  // }
+
+
+
   return (
+
+
     <>
       <div>
         <a href="https://vitejs.dev" target="_blank">
@@ -28,6 +37,13 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <div>
+        <button onClick={() => {
+
+          console.log(">>  đã bảo đừng click em rồi :))");
+        }} > đừng click em</button>
+
+      </div>
     </>
   )
 }
