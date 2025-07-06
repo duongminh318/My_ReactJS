@@ -1,6 +1,6 @@
-const FakeComponent= ()=>{
+const FakeComponent = () => {
 
-     return(
+    return (
         <div>
             fake component
         </div>
@@ -8,14 +8,27 @@ const FakeComponent= ()=>{
 
 }
 
+//jsx
+// fragment : 1 parent
+// import css
+import './style.css';
+
 
 const MyComponent = () => {
 
     return (
-        <div>Win & Duong Khoi Minh</div> // tag
+        <>
+
+            <div> Win & Win tech</div>
+            <div className="child" 
+            style={
+                {borderRadius: "10px"}
+            }
+            > class name chill</div>
+        </>
 
     );
 }
 
 export default MyComponent;
-export {FakeComponent};
+export { FakeComponent };
