@@ -1,4 +1,9 @@
-const TodoNew = () => {
+const TodoNew = (props) => {
+ console.log(">>> check props: ", props);
+    const {addNewToDo}= props;
+
+    // addNewToDo("eric");
+   
     return (
 
         <div className="todo-new">
