@@ -13,7 +13,7 @@ const App = () => {
     country: "Việt Nam"
   }
 
-  const addNewToDo = (name) => {
+  const addNewToDo = (name) => {  // chuyền tham số qua bên kia
 
     alert(`call me ${name}`);
   }
