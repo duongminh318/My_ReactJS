@@ -1,4 +1,12 @@
+import { useState } from "react";
+
 const TodoNew = (props) => {
+
+    //useState hook
+    // const valueInput =" Eirc";
+    const[valueInput, setValueInput]= useState("win")
+
+
     console.log(">>> check props: ", props);
     const { addNewToDo } = props;
 
@@ -6,7 +14,7 @@ const TodoNew = (props) => {
 
     // addNewTodo ("eric")  
     const handleClick = () => {  // fire: kích hoạt function
-        alert("Click me")
+       console.log(">> check value input: ", valueInput);
     }
 
     //  const handleOnChange = (event) => {  // fire: kích hoạt function
@@ -16,6 +24,7 @@ const TodoNew = (props) => {
 
     const handleOnChange = (name) => {  // fire: kích hoạt function
         console.log(">> handleOnChange ", name);
+        setValueInput(name);
     }
 
     return (
@@ -28,6 +37,11 @@ const TodoNew = (props) => {
                 onClick={handleClick}
             >Add
             </button>
+
+                <div>
+                    My text input is = {valueInput}
+                </div>
+
         </div>
     );
 }
