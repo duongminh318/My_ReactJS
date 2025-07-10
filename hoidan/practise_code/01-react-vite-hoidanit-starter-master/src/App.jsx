@@ -23,10 +23,22 @@ const App = () => {
 
   const addNewToDo = (name) => {  // chuyền tham số qua bên kia
 
-    alert(`call me ${name}`);
+    const newTodo={
+      id:randomIntFromInterval(1, 1000000),
+      name: name
+    }
+    setTodoList([...todoList, newTodo])
+    //array.push
+    // todoList.push(newTodo)
   }
 
   // addNewToDo();
+
+  const randomIntFromInterval=(min, max) => { // min and max included 
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+
 
 
 

@@ -14,6 +14,7 @@ const TodoNew = (props) => {
 
     // addNewTodo ("eric")  
     const handleClick = () => {  // fire: kích hoạt function
+        addNewToDo(valueInput);
        console.log(">> check value input: ", valueInput);
     }
 
