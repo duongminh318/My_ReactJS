@@ -4,7 +4,7 @@ const TodoNew = (props) => {
 
     //useState hook
     // const valueInput =" Eirc";
-    const[valueInput, setValueInput]= useState("win")
+    const [valueInput, setValueInput] = useState("win")
 
 
     console.log(">>> check props: ", props);
@@ -15,7 +15,8 @@ const TodoNew = (props) => {
     // addNewTodo ("eric")  
     const handleClick = () => {  // fire: kích hoạt function
         addNewToDo(valueInput);
-       console.log(">> check value input: ", valueInput);
+        //    console.log(">> check value input: ", valueInput);
+        setValueInput("");
     }
 
     //  const handleOnChange = (event) => {  // fire: kích hoạt function
@@ -33,15 +34,16 @@ const TodoNew = (props) => {
         <div className="todo-new">
             <input type="text" placeholder="Thêm một công việc mới..."
                 onChange={(event) => handleOnChange(event.target.value)}  // thay bằng arrow function
+                value={valueInput}
             />
             <button style={{ cursor: "pointer" }}
                 onClick={handleClick}
             >Add
             </button>
 
-                <div>
-                    My text input is = {valueInput}
-                </div>
+            <div>
+                My text input is = {valueInput}
+            </div>
 
         </div>
     );
