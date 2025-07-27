@@ -8,6 +8,7 @@ import pic2 from "./assets/pic2.png";
 import pic3 from "./assets/pic3.png";
 import pic4 from "./assets/pic4.png";
 
+import { myData } from "../data";
 
 // ✅ Header component – phần đầu trang gồm logo, tiêu đề, mô tả
 function Header() {
@@ -24,12 +25,12 @@ function Header() {
 
 
 // ✅ MainContent component – hiển thị 1 khái niệm trong React, nhận dữ liệu qua props
-function MainContent(props) {
+function MainContent({image, title, desc}) {
   return (
     <li>
-      <img src={props.image} alt={props.title} />
-      <h2>{props.title}</h2>
-      <p>{props.desc}</p>
+      <img src={image} alt={title} />
+      <h2>{title}</h2>
+      <p>{desc}</p>
     </li>
   );
 }
@@ -44,6 +45,11 @@ MainContent.propTypes = {
 
 // ✅ App component – Thành phần chính chứa toàn bộ nội dung
 function App() {
+  console.log(myData);
+  console.log(myData[0].title);
+  console.log(myData[0].desc);
+  console.log(myData[0].image);
+
   return (
     <>
       {/* Phần đầu trang */}
@@ -56,25 +62,15 @@ function App() {
 
           <ul>
             <MainContent
-              image={pic1}
-              title="Components"
-              desc="Khối xây dựng giao diện cơ bản - kết hợp nhiều thành phần để tạo nên ứng dụng."
+              image={myData[0].image}
+              title={myData[0].title}
+              desc={myData[0].desc}
             />
-            <MainContent
-              image={pic2}
-              title="JSX"
-              desc="Kết hợp HTML và JavaScript để tạo giao diện động và mạnh mẽ."
-            />
-            <MainContent
-              image={pic3}
-              title="Props"
-              desc="Truyền dữ liệu vào thành phần để làm nó linh hoạt và tái sử dụng."
-            />
-            <MainContent
-              image={pic4}
-              title="State"
-              desc="Dữ liệu được React quản lý, khi thay đổi sẽ tự động làm mới giao diện."
-            />
+            {/* Hoặc có thể sử dụng cú pháp spread để truyền props ngắn gọn hơn */}
+            <MainContent {...myData[0]} /> 
+            <MainContent {...myData[1]} />
+            <MainContent {...myData[2]} />
+            <MainContent {...myData[3]} />
           </ul>
         </section>
       </main>
