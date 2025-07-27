@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
 
 </head>
 
@@ -35,7 +36,7 @@
                 <p>Học ReactJS từ cơ bản tới nâng cao</p>
             </div>
     -->
-
+  <div id="root"></div>
 
     <script>
         // // DOM
@@ -61,39 +62,39 @@
 
         //6
         //DOM
-        const ulDOM = document.createElement("ul");
-        ulDOM.id = "ul-id";
-        ulDOM.style = "color: red; font-size: 30px";
+        // const ulDOM = document.createElement("ul");
+        // ulDOM.id = "ul-id";
+        // ulDOM.style = "color: red; font-size: 30px";
 
-        const liDOM1 = document.createElement("li");
-        liDOM1.id = "li-1";
-        liDOM1.innerText = "Javascript";
+        // const liDOM1 = document.createElement("li");
+        // liDOM1.id = "li-1";
+        // liDOM1.innerText = "Javascript";
 
-        const liDOM2 = document.createElement("li");
-        liDOM2.innerText = "React";
+        // const liDOM2 = document.createElement("li");
+        // liDOM2.innerText = "React";
 
-        ulDOM.appendChild(liDOM1);
-        ulDOM.appendChild(liDOM2);
+        // ulDOM.appendChild(liDOM1);
+        // ulDOM.appendChild(liDOM2);
 
-        document.body.appendChild(ulDOM);
+        // document.body.appendChild(ulDOM);
 
-        //React
-        const ulReact = React.createElement(
-            "ul",
-            {
-                id: "ul-id2",
-                style: "color: red; font-size: 30px"
+        // //React
+        // const ulReact = React.createElement(
+        //     "ul",
+        //     {
+        //         id: "ul-id2",
+        //         style: "color: red; font-size: 30px"
 
-            },
-            React.createElement('li', { id: 'li-1' }, 'javascript'),
-            React.createElement('li', null, 'Reactjs'),
+        //     },
+        //     React.createElement('li', { id: 'li-1' }, 'javascript'),
+        //     React.createElement('li', null, 'Reactjs'),
 
 
-        )
+        // )
 
-        console.log(ulReact);
+        // console.log(ulReact);
 
-        //7
+        // //7
         const postItem = React.createElement(
             "div",
             { className: "post-item" },
@@ -109,9 +110,12 @@
             )
         );
 
-        console.log(postItem);
+        // console.log(postItem);
+        const root = document.getElementById('root');
 
+        // React-Dom -- render UI
 
+        ReactDOM.render(postItem, root)
 
     </script>
 
