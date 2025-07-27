@@ -1,20 +1,20 @@
 import './App.css'
 import demoPic from "../src/assets/img/demopic.jpg"
-
+//  lấy thời gian hiện tại
 let today = new Date().toLocaleDateString();
 let time = new Date().toLocaleTimeString();
 const wellCome = [
   "Chào mừng bạn đến với thế giới React!",
   "Rất vui được chào đón bạn đến thế giới React",
-  "Chúng ta sẽ được học các kiển thực thú vị về React",
+  "Chúng ta sẽ được học các kiến thực thú vị về React",
 ];
-
+// ramdom title
 function ranDomTitle() {
   return Math.floor(Math.random() * wellCome.length)
 }
 
 function Header() {
-  const title= wellCome[ranDomTitle()]
+  const title = wellCome[ranDomTitle()]
   return <>
     <h1>{title}</h1>
     <p>
@@ -25,17 +25,17 @@ function Header() {
   </>
 }
 
-const name= "Win";
+const name = "Win";
 let isLogedIn = false;
 let person = {
   name: "Lan",
   age: 38,
 };
 
-function DinamicValue(){
-  return(
+function DinamicValue() {  // dữ liệu động
+  return (
     <>
-     {/*1.  dùng để chèn **biểu thức** JavaScript (expression) */}
+      {/*1.  dùng để chèn **biểu thức** JavaScript (expression) */}
       <h2>Chào {name}</h2>
       <p>Kết quả: {1 + 2 * 5}</p>
       {/*2.  không chèn **câu lệnh** (statement) */}
