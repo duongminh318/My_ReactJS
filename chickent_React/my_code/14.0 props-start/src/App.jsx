@@ -18,10 +18,17 @@ import TabButton from "./components/TabButton.jsx"
 function App() {
 
   // tạo sự kiện click trong react sau đó gắn sự kiện cho nút bấm 
-  function handleClick() {
-    // làm việc gì đó khi nút được bấm
-    alert("nút bấm đã được click");
+  // function handleClick() {
+  //   // làm việc gì đó khi nút được bấm
+  //   alert("nút bấm đã được click");
+  // }
+
+  // handerSelect 
+  function handleClick(selectedButton) {
+    alert(`Bạn đã chọn: ${selectedButton}`);
   }
+
+
   return (
     <>
       {/* Phần đầu trang */}
@@ -29,37 +36,35 @@ function App() {
 
       {/* Nội dung chính */}
       <main>
-        <section id="core-concepts">
-          <h2>Khái niệm chính trong React</h2>
+      <section id="core-concepts">
+        <h2>Khái niệm chính trong React</h2>
 
-          <ul>
-            <MainContent
-              image={myData[0].image}
-              title={myData[0].title}
-              desc={myData[0].desc}
-            />
-            {/* Hoặc có thể sử dụng cú pháp spread để truyền props ngắn gọn hơn */}
-            {/* <MainContent {...myData[0]} />  */}
-            <MainContent {...myData[1]} />
-            <MainContent {...myData[2]} />
-            <MainContent {...myData[3]} />
-          </ul>
-        </section>
+        <ul>
+        <MainContent
+          image={myData[0].image}
+          title={myData[0].title}
+          desc={myData[0].desc}
+        />
+        {/* Hoặc có thể sử dụng cú pháp spread để truyền props ngắn gọn hơn */}
+        {/* <MainContent {...myData[0]} />  */}
+        <MainContent {...myData[1]} />
+        <MainContent {...myData[2]} />
+        <MainContent {...myData[3]} />
+        </ul>
+      </section>
 
-        <section id="examples">
-          <h2>Examples</h2>
-          <menu>
-
-            <TabButton onSelect={handleClick}>Components</TabButton>
-            {/* <TabButton batky="ahihi" ></TabButton> */}
-            <TabButton onSelect={handleClick}>JSX</TabButton>
-            <TabButton onSelect={handleClick}>Props</TabButton>
-            <TabButton onSelect={handleClick}>State</TabButton>
-          </menu>
-        </section>
+      <section id="examples">
+        <h2>Examples</h2>
+        <menu>
+          <TabButton onSelect={() => handleClick("Components")}>Components</TabButton>
+          <TabButton onSelect={() => handleClick("JSX")}>JSX</TabButton>
+          <TabButton onSelect={() => handleClick("Props")}>Props</TabButton>
+          <TabButton onSelect={() => handleClick("State")}>State</TabButton>
+        </menu>
+      </section>
       </main>
     </>
-  );
+    );
 }
 
 
