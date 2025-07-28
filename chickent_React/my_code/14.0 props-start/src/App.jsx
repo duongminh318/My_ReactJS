@@ -16,11 +16,12 @@ import TabButton from "./components/TabButton.jsx"
 
 // ✅ App component – Thành phần chính chứa toàn bộ nội dung
 function App() {
-  console.log(myData);
-  console.log(myData[0].title);
-  console.log(myData[0].desc);
-  console.log(myData[0].image);
 
+  // tạo sự kiện click trong react sau đó gắn sự kiện cho nút bấm 
+  function handleClick() {
+    // làm việc gì đó khi nút được bấm
+    alert("nút bấm đã được click");
+  }
   return (
     <>
       {/* Phần đầu trang */}
@@ -49,11 +50,11 @@ function App() {
           <h2>Examples</h2>
           <menu>
 
-            <TabButton>Components</TabButton>
+            <TabButton onSelect={handleClick}>Components</TabButton>
             {/* <TabButton batky="ahihi" ></TabButton> */}
-            <TabButton>JSX</TabButton>
-            <TabButton>Props</TabButton>
-            <TabButton>State</TabButton>
+            <TabButton onSelect={handleClick}>JSX</TabButton>
+            <TabButton onSelect={handleClick}>Props</TabButton>
+            <TabButton onSelect={handleClick}>State</TabButton>
           </menu>
         </section>
       </main>

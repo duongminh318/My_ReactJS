@@ -1,4 +1,4 @@
-export default function TabButton({children}){
+export default function TabButton({children, onSelect}){
 
   // sự kiện click trong js
   // const btn = document.querySelector("button");
@@ -7,14 +7,10 @@ export default function TabButton({children}){
 
   // })
   
-// tạo sự kiện click trong react sau đó gắn sự kiện cho nút bấm 
-function handleClick() {
-  // làm việc gì đó khi nút được bấm
-  alert("nút bấm đã được click");
-}
+
     return(
          <li>
-              <button onClick={handleClick}>{children} </button>
+              <button onClick={onSelect}>{children} </button>
             </li>
     )
 }
