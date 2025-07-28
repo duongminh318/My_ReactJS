@@ -8,6 +8,9 @@ import Header from "./components/Header/Header";
 // import MainContent 
 import MainContent from "./components/MainContent/MainContent";
 
+// import TabButton 
+
+import TabButton from "./components/TabButton.jsx"
 
 
 
@@ -40,6 +43,18 @@ function App() {
             <MainContent {...myData[2]} />
             <MainContent {...myData[3]} />
           </ul>
+        </section>
+
+        <section id="examples">
+          <h2>Examples</h2>
+          <menu>
+
+            <TabButton>Components</TabButton>
+            {/* <TabButton batky="ahihi" ></TabButton> */}
+            <TabButton>JSX</TabButton>
+            <TabButton>Props</TabButton>
+            <TabButton>State</TabButton>
+          </menu>
         </section>
       </main>
     </>
