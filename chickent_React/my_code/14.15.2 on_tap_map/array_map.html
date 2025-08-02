@@ -53,6 +53,7 @@
         // console.log(config.calculate(3));
         // thisArg: cho phép bên trong callback của map() truy cập trực tiếp
         // vào các thuộc tính, phương thức của đối tượng được truyền vào.
+        // không sử dụng được cho arrow function chỗ config
         const M2 = [1, 2, 3];
         const kq = M2.map(function (v1) {
             return this.calculate(v1);
