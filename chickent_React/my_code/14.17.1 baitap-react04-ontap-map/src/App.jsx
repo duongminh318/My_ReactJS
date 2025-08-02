@@ -1,12 +1,15 @@
 import Book from "./Book";
+// import index.css
+import "./index.css"
 // mảng chứa tên các cuối sách
 const myBooks = ["sách hay", "hành trình phát triển của wintech", "kỹ năng sống", "sách X"];
 function App() {
   return (
-    <>
-      <h1>Danh sách Sách yêu thích</h1>
+  
+    <div className="container">
+        <h1 className="title" >Danh sách Sách yêu thích</h1>
 
-      <ul>
+      <ul className="book-list">
         {/* <Book title={myBooks[0]}> </Book>
         <Book title={myBooks[1]}/> */}
 
@@ -16,7 +19,9 @@ function App() {
           <Book title={book} key={index} />
         ))}
       </ul>
-    </>
+    </div>
+    
+
   );
 }
 
