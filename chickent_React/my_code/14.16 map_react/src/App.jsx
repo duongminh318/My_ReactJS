@@ -3,6 +3,7 @@ import MainContent from "./components/MainContent/MainContent.jsx";
 import Header from "./components/Header/Header.jsx";
 import { myData, EXAMPLES } from "../data.js";
 import TabButton from "./components/TabButton.jsx";
+import Section from "./components/MainContent/Section.jsx";
 
 function App() {
   const [selectedTopic, setSelectedTopic] = useState();
@@ -28,29 +29,29 @@ function App() {
     <>
       <Header />
       <main>
-        <section id="core-concepts">
+        <Section id="core-concepts">
           <h2>Khái niệm chính trong React</h2>
           <ul>
             {
-              myData.map((item) =>(
-                 <MainContent key={item.title} {...item}/>
+              myData.map((item) => (
+                <MainContent key={item.title} {...item} />
               ))
             }
           </ul>
-        </section>
+        </Section>
 
-        <section id="examples">
-          <h2>Examples</h2>
+        <Section title="Examples" id="examples" className="demo_class">
+
           {/* prettier-ignore */}
           <menu>
             <TabButton
-              isSelected={selectedTopic==="components"}
+              isSelected={selectedTopic === "components"}
               onSelect={() => { handleSelect('components') }}>
               Components
             </TabButton>
-            <TabButton  isSelected={selectedTopic==="jsx"} onSelect={() => { handleSelect('jsx') }}>JSX</TabButton>
-            <TabButton  isSelected={selectedTopic==="props"} onSelect={() => { handleSelect('props') }}>Props</TabButton>
-            <TabButton  isSelected={selectedTopic==="state"} onSelect={() => { handleSelect('state') }}>State</TabButton>
+            <TabButton isSelected={selectedTopic === "jsx"} onSelect={() => { handleSelect('jsx') }}>JSX</TabButton>
+            <TabButton isSelected={selectedTopic === "props"} onSelect={() => { handleSelect('props') }}>Props</TabButton>
+            <TabButton isSelected={selectedTopic === "state"} onSelect={() => { handleSelect('state') }}>State</TabButton>
           </menu>
           {/* dùng toán tử 3 ngôi */}
           {/* {!selectedTopic ? (
@@ -95,7 +96,7 @@ function App() {
 
 
 
-        </section>
+        </Section>
       </main>
     </>
   );
