@@ -41,8 +41,11 @@ export default function AuthInputs() {
           <label className={`${emailNotValid?"invalid": ""}`}>Email</label>
           <input
             type="email"
-            className={emailNotValid ? "invalid" : undefined} 
-            // Nếu email không hợp lệ => thêm class "invalid", để CSS báo lỗi
+            style={{
+              // thay đổi động style theo điều kiện
+               backgroundColor: emailNotValid? "red": "yellow",
+            }}
+          
             onChange={(event) => handleInputChange("email", event.target.value)} 
             // Mỗi khi input thay đổi => gọi handleInputChange cập nhật state
           />
