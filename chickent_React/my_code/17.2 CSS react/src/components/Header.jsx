@@ -1,5 +1,6 @@
 import logo from "../assets/logo-tuhoc.png";
-import "./header.css"
+// import "./header.css"
+import classes from "./header.module.css"
 
 export default function Header() {
   return (
@@ -7,16 +8,17 @@ export default function Header() {
       <img src={logo} alt="A canvas" />
       <h1>CSS trong React</h1>
       <p
-        style={{ 
-           // ta chuyển vào một đối tượng
-           color:"red",
-           backgroundColor: "yellow" , //  background-color --> camelCase
-
-        }}
-      
+        className={classes["my-paragraph"]}
       >
         Tìm hiểu về css trong react cho người mới.
-        </p>
+      </p>
+
+      <p
+        className={classes["my-paragraph"]}
+      >
+        Test
+      </p>
+
     </header>
   );
 }

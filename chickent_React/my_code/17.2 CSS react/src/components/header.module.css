@@ -13,6 +13,15 @@ header {
   margin-bottom: 2rem;
 }
 
+.paragraph{
+  color: red;
+}
+
+.my-paragraph{
+  color: green;
+}
+
+
 header img {
   object-fit: contain;
   margin-bottom: 2rem;
