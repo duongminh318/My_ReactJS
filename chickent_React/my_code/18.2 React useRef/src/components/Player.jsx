@@ -33,7 +33,7 @@ export default function Player() {
           - Nếu không, nó hiển thị "No name".
       */}
       {/* <h2>Welcome {enteredPlayerName ? enteredPlayerName : "No name"}</h2> */}
-      <h2>Welcome {playerName.current?playerName.current.value :  "No name"}</h2>
+      <h2>Welcome {enteredPlayerName || "No name"}</h2>
       <div>
         {/* 9. Đây là ô nhập liệu (input) */}
         <input
