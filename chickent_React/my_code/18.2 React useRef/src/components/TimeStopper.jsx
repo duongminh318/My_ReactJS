@@ -1,7 +1,10 @@
 import { useState, useRef } from "react";
+import ResultModel from "./ResultModel";
+
 
 export default function TimeStopper({ title, targetTime }) {
   const timer= useRef();
+  const dialog= useRef();
   // Tạo 2 state để lưu thời gian
   const [timerStart, setTimerStart] = useState(false);
   const [timerExpired, setTimerExpired] = useState(false);
@@ -14,6 +17,8 @@ export default function TimeStopper({ title, targetTime }) {
       // Đoạn code bên trong này chỉ chạy sau khi hết thời gian chờ.
       // Nó cập nhật state của "timer" thành "đã hết hạn".
       setTimerExpired(true);
+      // hiển thị khi hết thời gian
+      dialog.current.showModal();
     }, targetTime * 1000); // Thời gian chờ được tính bằng cách lấy targetTime (giây) * 1000 (mili-giây).
 
     // Dòng này chạy NGAY LẬP TỨC khi hàm handleStart được gọi.
@@ -27,7 +32,9 @@ export default function TimeStopper({ title, targetTime }) {
   }
 
   return (
-    // Thẻ <section> bao bọc toàn bộ giao diện của component.
+  <>
+  <ResultModel ref={dialog} targetTime={targetTime} result="lost"/>
+   {/* // Thẻ <section> bao bọc toàn bộ giao diện của component. */}
     <section className="challenge">
       {/* Hiển thị tiêu đề, giá trị này được truyền vào từ bên ngoài. */}
       <h2>{title} </h2>
@@ -58,5 +65,7 @@ export default function TimeStopper({ title, targetTime }) {
         {timerStart ? " Time is running" : "Timer inactive"}
       </p>
     </section>
+  </>
+   
   );
 }
