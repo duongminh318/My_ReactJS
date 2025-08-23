@@ -18,7 +18,8 @@ export default function TimeStopper({ title, targetTime }) {
       // Nó cập nhật state của "timer" thành "đã hết hạn".
       setTimerExpired(true);
       // hiển thị khi hết thời gian
-      dialog.current.showModal();
+      // dialog.current.showModal();
+      dialog.current.open();
     }, targetTime * 1000); // Thời gian chờ được tính bằng cách lấy targetTime (giây) * 1000 (mili-giây).
 
     // Dòng này chạy NGAY LẬP TỨC khi hàm handleStart được gọi.
