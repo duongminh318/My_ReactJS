@@ -1,72 +1,63 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import ResultModel from "./ResultModel";
 
-
 export default function TimeStopper({ title, targetTime }) {
-  const timer= useRef();
-  const dialog= useRef();
-  // Tạo 2 state để lưu thời gian
-  const [timerStart, setTimerStart] = useState(false);
-  const [timerExpired, setTimerExpired] = useState(false);
+  // Tạo ref để lưu interval timer và dialog
+  const timer = useRef();
+  const dialog = useRef();
 
-  // Hàm xử lý khi click vào nút
-  // Đây là hàm sẽ được gọi khi bạn muốn bắt đầu bộ đếm.
+  // Khởi tạo state lưu thời gian còn lại (đổi từ giây sang mili-giây)
+  const [timeRemaining, setTimeRemaining] = useState(targetTime * 1000);
+
+  // Kiểm tra xem timer có đang chạy hay không
+  const timerIsActive = timeRemaining > 0 && timeRemaining < targetTime * 1000;
+
+  // Sử dụng useEffect để kiểm tra khi hết thời gian
+  useEffect(() => {
+    if (timeRemaining <= 0) {
+      clearInterval(timer.current); // Dừng timer
+      dialog.current.open();        // Mở dialog thông báo thua
+    }
+  }, [timeRemaining]);
+
+  // Hàm bắt đầu đếm thời gian
   function handleStart() {
-    // Dòng này đặt một "lệnh hẹn giờ" (timer) để chạy một đoạn code sau một khoảng thời gian nhất định.
-    timer.current= setTimeout(() => {
-      // Đoạn code bên trong này chỉ chạy sau khi hết thời gian chờ.
-      // Nó cập nhật state của "timer" thành "đã hết hạn".
-      setTimerExpired(true);
-      // hiển thị khi hết thời gian
-      // dialog.current.showModal();
-      dialog.current.open();
-    }, targetTime * 1000); // Thời gian chờ được tính bằng cách lấy targetTime (giây) * 1000 (mili-giây).
-
-    // Dòng này chạy NGAY LẬP TỨC khi hàm handleStart được gọi.
-    // Nó cập nhật state để báo hiệu rằng "bộ đếm đã bắt đầu".
-    setTimerStart(true);
+    timer.current = setInterval(() => {
+      setTimeRemaining((prevTime) => prevTime - 10); // Giảm mỗi 10ms
+    }, 10);
   }
 
-  function handleStop(){
-    clearTimeout(timer.current);
-    setTimerStart(false);
+  // Hàm dừng timer
+  function handleStop() {
+    clearInterval(timer.current); // Dừng interval
+    // hiển thị hộp thoại
+    dialog.current.open();
   }
 
   return (
-  <>
-  <ResultModel ref={dialog} targetTime={targetTime} result="lost"/>
-   {/* // Thẻ <section> bao bọc toàn bộ giao diện của component. */}
-    <section className="challenge">
-      {/* Hiển thị tiêu đề, giá trị này được truyền vào từ bên ngoài. */}
-      <h2>{title} </h2>
+    <>
+      {/* Hiển thị kết quả khi hết thời gian */}
+      <ResultModel ref={dialog} targetTime={targetTime} result="lost" />
 
-      {/* Cách hiển thị có điều kiện: Nếu `timerExpired` là true, thì hiển thị thẻ <p> này. Nếu không thì không hiển thị. */}
-      {timerExpired && <p> Bạn đã thua</p>}
-     
+      {/* Giao diện chính của component */}
+      <section className="challenge">
+        <h2>{title}</h2>
 
-      {/* Đoạn code này để hiển thị thời gian. */}
-      <p className="challenge-time">
-        {/* Hiển thị số giây. */}
-        {targetTime} second
-        {/* Kiểm tra xem `targetTime` có lớn hơn 1 không, nếu có thì thêm chữ "s" vào. */}
-        {targetTime > 1 ? "s" : ""}
-      </p>
+        {/* Hiển thị thời gian mục tiêu */}
+        <p className="challenge-time">
+          {targetTime} second{targetTime > 1 ? "s" : ""}
+        </p>
 
-      {/* Đây là nút bấm. */}
-      <button onClick={timerStart ? handleStop : handleStart}>
-        {/* Nội dung của nút sẽ thay đổi tùy thuộc vào trạng thái `timerStart`. */}
-        {/* Nếu `timerStart` là true, nút hiển thị "stop", ngược lại là "start". */}
-        {timerStart ? "stop" : "start"}
-      </button>
+        {/* Nút bắt đầu hoặc dừng timer */}
+        <button onClick={timerIsActive ? handleStop : handleStart}>
+          {timerIsActive ? "stop" : "start"}
+        </button>
 
-      {/* Đoạn code này để hiển thị trạng thái của timer. */}
-      <p className={timerStart? "active": undefined}>
-        {/* Nếu `timerStart` là true, thêm class "active" và hiển thị "Time is running". */}
-        {/* Ngược lại, không có class và hiển thị "Timer inactive". */}
-        {timerStart ? " Time is running" : "Timer inactive"}
-      </p>
-    </section>
-  </>
-   
+        {/* Hiển thị trạng thái timer */}
+        <p className={timerIsActive ? "active" : undefined}>
+          {timerIsActive ? "Time is running" : "Timer inactive"}
+        </p>
+      </section>
+    </>
   );
 }
