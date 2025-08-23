@@ -1,5 +1,8 @@
 import { useImperativeHandle, useRef } from "react"
-export default function ResultModel({result, targetTime, ref}){
+export default function ResultModel({ targetTime, ref, remainingTime, onReset}){
+
+    const userLost= remainingTime<=0;
+    const formattedRemainingTime= (remainingTime/1000).toFixed(2);
 
     const dialog = useRef();
     useImperativeHandle(ref, ()=>{
@@ -11,10 +14,11 @@ export default function ResultModel({result, targetTime, ref}){
     });
     return(
         <dialog ref={dialog} className="result-modal">
-            <h2>you {result}</h2>
+            {/* <h2>you {result}</h2> */}
+            {userLost && <p> You Lost</p>}
             <p> thời gian đích : <strong> {targetTime} second</strong></p>
-            <p> bạn đã dừng tại <strong> X second</strong> </p>
-            <form method="dialog">
+            <p> bạn còn <strong> {formattedRemainingTime} </strong> </p>
+            <form method="dialog" onSubmit={onReset}>
                 <button> Close</button>
             </form>
         </dialog>

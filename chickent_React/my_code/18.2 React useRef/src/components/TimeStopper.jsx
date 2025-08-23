@@ -33,11 +33,18 @@ export default function TimeStopper({ title, targetTime }) {
     // hiển thị hộp thoại
     dialog.current.open();
   }
+ 
+  // Hàm reset timer
+  function handleReset() {
+    clearInterval(timer.current);                 // Dừng interval nếu đang chạy
+    setTimeRemaining(targetTime * 1000);           // Reset thời gian về ban đầu
+  }
+
 
   return (
     <>
       {/* Hiển thị kết quả khi hết thời gian */}
-      <ResultModel ref={dialog} targetTime={targetTime} result="lost" />
+      <ResultModel ref={dialog} targetTime={targetTime} remainingTime={timeRemaining} onReset={handleReset}/>
 
       {/* Giao diện chính của component */}
       <section className="challenge">
