@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 
 // ✅ MainContent component – hiển thị 1 khái niệm trong React, nhận dữ liệu qua props
-function MainContent({image, title, desc}) {
+function MainContent({image, title, desc}) {  // các tham số
   return (
     <li>
       <img src={image} alt={title} />
