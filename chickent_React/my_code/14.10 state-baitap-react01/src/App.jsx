@@ -39,7 +39,7 @@ function App() {
     } else {
       newGreeting = "Chào buổi tối!";
     }
-
+// set lại state theo thời gian 
     setGreeting(newGreeting);
   }
 
